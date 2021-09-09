@@ -4,7 +4,7 @@ public class World1 extends World
 {
     public World1()
     {    
-        super(600, 600, 1); 
+        super(1000, 800, 1); 
         spawn();
     }
     
@@ -12,7 +12,7 @@ public class World1 extends World
     {
         if (getObjects(next.class).isEmpty())
         {
-                  Greenfoot.setWorld(new World2());
+                  Greenfoot.setWorld(new sky());
         }
     }
     
@@ -23,6 +23,9 @@ public class World1 extends World
         addObject(Main,150,150);
         
         next next = new next();
-        addObject(next,350,350);
+        addObject(next,350,600);
+        
+        bug bug = new bug();
+        addObject(bug,500,500);
     }
 }
