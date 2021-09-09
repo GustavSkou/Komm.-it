@@ -19,5 +19,23 @@ public class bullet extends Actor
         {
             getWorld().removeObject(this);              // missil2 fjernes
         }
-    }   
+    }
+    
+    public void kill()
+    {
+        //henter actors
+        Actor bullet; 
+        Actor bug;
+        //henter cordinaterne
+        bullet = getOneObjectAtOffset(0, 0, bullet.class);
+        bug = getOneObjectAtOffset(0, 0, bug.class);
+        
+        if (bullet != bug)
+        {
+            World world;
+            world = getWorld();
+            world.removeObject(bug);
+        }
+    }
+    
 }
