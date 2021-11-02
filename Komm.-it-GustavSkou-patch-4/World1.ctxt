@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=World1
+comment1.params=
+comment1.target=World1()
+comment2.params=
+comment2.target=void\ spawn()
+comment3.params=
+comment3.target=Counter\ getCounter()
+numComments=4
