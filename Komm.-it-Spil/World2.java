@@ -12,7 +12,7 @@ public class World2 extends World
     public void spawn()
 
     {
-        addObject(new Main(),150,150);
+        addObject(new Player(),150,150);
         
         while (addenemy_1 < 0)
         {

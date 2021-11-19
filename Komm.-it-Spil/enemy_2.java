@@ -17,10 +17,10 @@ public class enemy_2 extends Actor
         enemy_2 = getOneObjectAtOffset(0, 0, enemy_2.class);
         
         move(0);
-        if (getWorld().getObjects(Main.class).size() != 0)
+        if (getWorld().getObjects(Player.class).size() != 0)
         {
-            Actor Main = (Actor)getWorld().getObjects(Main.class).get(0);
-            turnTowards(Main.getX(), Main.getY());
+            Actor Player = (Actor)getWorld().getObjects(Player.class).get(0);
+            turnTowards(Player.getX(), Player.getY());
         }
         else
         {

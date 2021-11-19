@@ -13,9 +13,9 @@ public class World1 extends World
     public void spawn()
 
     {
-        addObject(new Main(),150,150);
+        addObject(new Player(),150,150);
         
-        while (addenemy_1 < 0)
+        while (addenemy_1 < 2)
         {
             addObject(new enemy_1(), Greenfoot.getRandomNumber(800), Greenfoot.getRandomNumber(800));
             addenemy_1++;

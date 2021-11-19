@@ -22,9 +22,9 @@ public class enemy_1 extends Actor
     
     public void look()
     {
-        if (getWorld().getObjects(Main.class).size() != 0)
+        if (getWorld().getObjects(Player.class).size() != 0)
         {
-            Actor M = (Actor)getWorld().getObjects(Main.class).get(0);
+            Actor M = (Actor)getWorld().getObjects(Player.class).get(0);
             turnTowards(M.getX(), M.getY());
         }
         else

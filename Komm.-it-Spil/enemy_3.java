@@ -29,14 +29,14 @@ public class enemy_3 extends Actor
     {
         int enemyX = 0;
         int enemyY = 0;
-        int mainX = 0;
-        int mainY = 0;
+        int PlayerX = 0;
+        int PlayerY = 0;
         int angle = getRotation();
-        if (getWorld().getObjects(Main.class).size() != 0)
+        if (getWorld().getObjects(Player.class).size() != 0)
         {
-            Actor M = (Actor)getWorld().getObjects(Main.class).get(0);
-            mainX = M.getX();
-            mainY = M.getY();
+            Actor M = (Actor)getWorld().getObjects(Player.class).get(0);
+            PlayerX = M.getX();
+            PlayerY = M.getY();
         }
 
         if (getWorld().getObjects(enemy_3.class).size() != 0)
@@ -47,19 +47,19 @@ public class enemy_3 extends Actor
         }
         
         
-        if (mainX > enemyX)
+        if (PlayerX > enemyX)
         {
             setLocation(enemyX+1, enemyY);
         }
-        if (mainX < enemyX)
+        if (PlayerX < enemyX)
         {
             setLocation(enemyX-1, enemyY);
         }
-        if (mainY > enemyY)
+        if (PlayerY > enemyY)
         {
             setLocation(enemyX, enemyY+1);
         }
-        if (mainY < enemyY)
+        if (PlayerY < enemyY)
         {
             setLocation(enemyX, enemyY-1);
         }
@@ -85,9 +85,9 @@ public class enemy_3 extends Actor
     
     public void dance()
     {
-        if (getWorld().getObjects(Main.class).size() != 0)
+        if (getWorld().getObjects(Player.class).size() != 0)
         {
-            Actor M = (Actor)getWorld().getObjects(Main.class).get(0);
+            Actor M = (Actor)getWorld().getObjects(Player.class).get(0);
             turnTowards(M.getX(), M.getY());
         }
         else
