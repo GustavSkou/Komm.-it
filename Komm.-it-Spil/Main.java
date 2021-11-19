@@ -2,45 +2,137 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Main extends Actor
 {
+    //vars
+    private boolean readEnter = true;
+    private Cooldown myCooldown;
+    public int hp = 3;
+    //public int dmg = 1;
+    private int enemykill;
+    private int spawnCounter;
+    enemy_bullet myenemy_bullet = new enemy_bullet();
+    
+    public Main()
+    {
+        myCooldown = new Cooldown();
+        enemykill = 0;
+        spawnCounter = 0;
+    }
+    
     public void act()
     {   
-        Actor Main1; 
-        Actor next1;
-    
-        Main1 = getOneObjectAtOffset(0, 0, Main.class);
-        next1 = getOneObjectAtOffset(0, 0, next.class);
+        int angle = getRotation();
+        int x = getX();
+        int y = getY();
+        
+        checkCollision();
         
         if (Greenfoot.isKeyDown("a"))
         {
-            turn(-4);
+            setLocation(x-3, y);
         }
         if (Greenfoot.isKeyDown("d"))
         {
-            turn(4);
+            setLocation(x+3, y);
         }
-        if (Greenfoot.isKeyDown("w")) //hvis man holder "w" inde øger man jet2's fart med 3
+        if (Greenfoot.isKeyDown("w"))
         {
-            move(3); 
+            setLocation(x, y-3);
         }
-         if (Greenfoot.isKeyDown("s")) //hvis man holder "w" inde øger man jet2's fart med 3
+        if (Greenfoot.isKeyDown("s"))
         {
-            move(-3); 
+            setLocation(x, y+3);
         }
-        if (Greenfoot.isKeyDown("space")) //hvis man holder "w" inde øger man jet2's fart med 3
+        
+        if (Greenfoot.isKeyDown ("d") && Greenfoot.isKeyDown("w"))  
         {
-            bullet();
+            setLocation(x+2, y-2);
+        }
+        if (Greenfoot.isKeyDown ("a") && Greenfoot.isKeyDown("w"))  
+        {
+            setLocation(x-2, y-2);
+        }
+        if (Greenfoot.isKeyDown ("d") && Greenfoot.isKeyDown("s"))  
+        {
+            setLocation(x+2, y+2);
+        }
+        if (Greenfoot.isKeyDown ("a") && Greenfoot.isKeyDown("s"))  
+        {
+            setLocation(x-2, y+2);
+        }
+        
+        if (Greenfoot.isKeyDown("space"))
+        {
+            if(myCooldown.Cooldown()) //Cooldown bliver taget i brug
+            {
+                bullet(); //"bullet" bliver sat igang 
+            }
+        }
+        
+        setRotation(angle);
+        if(Greenfoot.mouseMoved(null))
+        {
+             MouseInfo mouse = Greenfoot.getMouseInfo();
+             turnTowards(mouse.getX(),mouse.getY());
         }
     }
-
+    
     public void bullet()
     {
         bullet bullet = new bullet();
-        getWorld().addObject(bullet, getX(), getY());  //indsætter missil1 ved cordinaterne af jet1
-        bullet.setRotation(getRotation());             //sætter rotation af missilen til det samme som jet1
-        bullet.move(60);                               //flytter missil1 60 pixels frem
+        getWorld().addObject(bullet, getX(), getY());  //indsætter  ved cordinaterne
+        bullet.setRotation(getRotation());             //sætter rotation 
+        bullet.move(55);
     }
-
-
+    
+    public void score()
+    {
+        Actor enemy;
+        Actor bullet;
+            
+        enemy = getOneObjectAtOffset(250, 250, enemy_bullet.class);
+        bullet = getOneObjectAtOffset(0, 0, bullet.class);
+        if (bullet != enemy)
+        {
+            World world;  
+            world = getWorld();  
+            world.removeObject(enemy);
+            world.removeObject(bullet);
+            //score++;
+            spawnCounter++;
+        }
+    }
+    
+    public void addNewEnemy()
+    {
+        if (spawnCounter == 1)
+        {
+            getWorld().addObject( new enemy_1(), Greenfoot.getRandomNumber(800), Greenfoot.getRandomNumber(800));
+            spawnCounter = 0;
+        }
+    }
+    
+    /*
+    public void hit()
+    {
+        hp = hp - myenemy_bullet.bulletdmg;
+        if (hp == 0);
+        {
+            Greenfoot.stop();
+        }
+    }
+    */
+   
+   public void checkCollision()
+    {
+        Actor a = getOneIntersectingObject(enemy_bullet.class);
+        hp = hp - myenemy_bullet.bulletdmg;
+        
+        
+        if (hp == 0)
+        {   
+            World world;
+            world = getWorld();
+            world.removeObject(this);
+        }
+    }
 }
-
-

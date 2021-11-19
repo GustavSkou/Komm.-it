@@ -1,7 +1,16 @@
 #BlueJ class context
 comment0.target=Main
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Main()
 comment2.params=
-comment2.target=void\ bullet()
-numComments=3
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ bullet()
+comment4.params=
+comment4.target=void\ score()
+comment5.params=
+comment5.target=void\ addNewEnemy()
+comment6.params=
+comment6.target=void\ checkCollision()
+comment6.text=\r\n\ \ \ \ public\ void\ hit()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ hp\ \=\ hp\ -\ myenemy_bullet.bulletdmg;\r\n\ \ \ \ \ \ \ \ if\ (hp\ \=\=\ 0);\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ Greenfoot.stop();\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ }\r\n
+numComments=7
