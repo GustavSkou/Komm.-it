@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class enemy_bullet extends Actor
 {
-    public int bulletdmg = 1;
+    private int bulletdmg = 1;
     private int hit = 0;
     
     public void act()
@@ -28,7 +28,7 @@ public class enemy_bullet extends Actor
     {
         Actor a = getOneIntersectingObject(Player.class);
           
-        //Main myMain = new Main();
+        
         if (a != null){   
             if (hit == 0){
                 hit = 1;
@@ -39,6 +39,19 @@ public class enemy_bullet extends Actor
             world = getWorld();  
             world.removeObject(this);
             
+        }
+    }
+    
+    public int getBulletDmg(){
+        if (bulletdmg == 1)
+        {
+            bulletdmg = 0;
+            return 1;
+        }
+        
+        else
+        { 
+            return 0;
         }
     }
 }
